@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+canvas {
+    border: 1px solid white;
+}
+
+#score, #timer {
+    margin-top: 10px;
+    font-size: 20px;
+}
