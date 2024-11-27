@@ -15,7 +15,7 @@ const iniciarAplicacion = () => {
     }
 
     // Ordenar de Z a A
-    palabras.sort((a, b) => b.localeCompare(a));
+    palabras.reverse();
 
     // Mostrar las palabras ordenadas
     document.getElementById("resultado").innerHTML = `<h2>Resultado:</h2><p>`+palabras.join(", ")+`</p>`;
