@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 1</title>
+  </head>
+  <body>
+    <h1>Datos de Usuarios aleatorios</h1>
+    <button id="obtenerUsuario">Obtener Usuario</button>
+    <div id="resultado"></div>
+
+    <script>
+      // Vincula el evento al botón
+      document
+        .getElementById('obtenerUsuario')
+        .addEventListener('click', function () {
+          // Realiza la solicitud HTTP de tipo GET
+          fetch('https://fakerapi.it/api/v2/persons?_quantity=1')
+            .then((response) => {
+              // Verifica si la respuesta es exitosa
+              if (response.ok) {
+                return response.json(); // Convierte la respuesta a JSON
+              } else {
+                throw new Error(
+                  'Error en la respuesta del servidor, código: ' +
+                    response.status
+                );
+              }
+            })
+            .then((data) => {
+              // Procesa los datos obtenidos del servidor
+              const user = data.data[0]; // Extrae el primer usuario
+              const { firstname, lastname, email, address, country } = user;
+
+              // Muestra los datos en el contenedor de resultados
+              document.getElementById('resultado').innerHTML = `
+                <h2>Información del Usuario:</h2>
+                <p><strong>Nombre:</strong> ${firstname} ${lastname}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Dirección:</strong> ${address.street}, ${address.city}</p>
+                <p><strong>País:</strong> ${address.country}</p>
+              `;
+            })
+            .catch((error) => {
+              // Maneja errores de la solicitud o de la conexión
+              document.getElementById('resultado').innerHTML = `
+                <p style="color: red;">Error: ${error.message}</p>
+              `;
+            });
+        });
+    </script>
+  </body>
+</html>
