@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación de Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .alert-box {
+            display: none;
+            padding: 20px;
+            background-color: #f0ad4e;
+            color: white;
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .media-container {
+            display: none;
+            margin-top: 20px;
+        }
+        #timer-display {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a la Página de Video</h1>
+    <p id="timer">Cuenta regresiva: 5 segundos</p>
+    <div class="alert-box" id="alert">¡Se ha publicado un nuevo video! Haz clic aquí para verlo.</div>
+    <div class="media-container" id="media-wrapper">
+        <video id="media-player" width="600" controls>
+            <source src="/example_MP4.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <p id="media-info"></p>
+    </div>
+
+    <script src="pr1.js"></script>
+</body>
+</html>
